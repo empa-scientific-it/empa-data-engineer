@@ -6,9 +6,9 @@ We have a software to keep track of any activities labs are doing in their resea
 
 The configuration of the software is as follows:
 
-- Each lab receives an *instance* of the software
-- One *instance* runs on a separate virtual machine (VM)
-- Each instance can be divided into *spaces*. Spaces are mechanism to partition an instance and manage permissions
+- Each lab receives an _instance_ of the software
+- One _instance_ runs on a separate virtual machine (VM)
+- Each instance can be divided into _spaces_. Spaces are mechanism to partition an instance and manage permissions
 - Currently, each group in a lab is assigned a different space
 - We pay each VM. The cost is composed as follows
   - Fixed costs: keep the VM always running
