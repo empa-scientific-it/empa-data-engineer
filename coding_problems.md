@@ -1,24 +1,24 @@
 # Coding problems for the interview at Empa Scientific IT
 
-## (1) S-Expression Parser
+## (1) S-expression Parser
 
-### Introduction: S-Expressions
+### Introduction: S-expressions
 
 _S-Expressions_ are a human-readable notation for nested lists, famously used to represent LISP programs.
 
-An S-Expression consists of two entities:
+A S-expression is composed of these two entities:
 
 - An _atom_ like `1` or `+` which represents a single symbol in an expression
 - A _cons cell_ like `(1 2)` that represents a list containing the _atoms_ `1` and `2`
 
-Cons-cells can be arbitrarily nested, for example, these forms are valid S-Expressions
+Cons-cells can be arbitrarily nested to form more complex expressions. For example, these forms are valid S-Expressions
 
 ```scheme
 (1 (2 3))
 (+ 1 (- 1 2))
 ```
 
-### S-Expression calculator
+### S-expression calculator
 
 Consider a subset of S-expressions (_calculator expressions_) used to represent a simple calculator. Therefore, we define:
 
