@@ -2,8 +2,10 @@
 
 Empa Data engineer interview material.
 
-- The problems' description can be found at [this Google Docs](https://docs.google.com/document/d/1pS-wMLB_9aZkLs_SK_RswfIvlo_GxvIhwxtbqFO8xTc/edit?usp=sharing).
+- The data engineer case study is described in [here](./case_study.md)
 
-- The `input/` folder contains several input data for the coding problems.
+- The coding problems are described [here](./coding_problems.md)
 
-- The `solutions/` folder contains (multiple) solutions to the three coding problems.
+- The `input/` folder contains several input data for the coding problems
+
+- The `solutions/` folder contains (multiple) solutions to the three coding problems
