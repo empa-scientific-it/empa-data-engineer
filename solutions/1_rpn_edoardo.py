@@ -1,5 +1,6 @@
+import pathlib
 import re
-from operator import add, sub, mul, truediv
+from operator import add, mul, sub, truediv
 
 ops = {"+": add, "-": sub, "*": mul, "/": truediv}
 
@@ -32,15 +33,10 @@ def print_results(results: list | set, title: str) -> None:
 
 
 if __name__ == "__main__":
-    examples = [
-        "(3 3)",  # invalid
-        "(+ 3)",  # invalid
-        "(()",  # invalid
-        "(+ 1 2)",
-        "(+ 1 (+ 2 3))",
-        "(+ 1 (+ (- 2 1) (+ 3 4)))",
-        "(+ 1 (+ (- 1 8) (+ 3 (+ 4 (+ 5 6)))))",
-    ]
+    path = pathlib.Path(__file__).resolve()
+    examples = (
+        (path.parents[1] / "input/1_rpn_expressions.txt").read_text().splitlines()
+    )
 
     results = list(zip(examples, map(eval_expr, examples)))
     valid = set(filter(lambda x: validate(x[1]), results))
