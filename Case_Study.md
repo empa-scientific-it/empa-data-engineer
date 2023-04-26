@@ -1,12 +1,16 @@
-# Data management system optimization
+# Case study for the interview at Empa Scientific IT
 
-We have software to keep track of any activities labs are doing in their research, and we keep a history of the actions that each lab performs. Each lab is composed of several groups. We want to see how active groups are to optimize available resources.
+## Data management system optimization
 
-- Instance → lab
-- Space → mechanism to partition an instance and manage permissions
-- An instance can host multiple groups
-- One instance runs on a separate virtual machine (VM)
-- We pay each VM
+We have a software to keep track of any activities labs are doing in their research, and we keep a history of the actions that each lab performs. Each lab is composed of several groups. We want to see how active groups are to optimize available resources.
+
+The configuration of the software is as follows:
+
+- Each lab receives an *instance* of the software
+- One *instance* runs on a separate virtual machine (VM)
+- Each instance can be divided into *spaces*. Spaces are mechanism to partition an instance and manage permissions
+- Currently, each group in a lab is assigned a different space
+- We pay each VM. The cost is composed as follows
   - Fixed costs: keep the VM always running
   - Variable costs: depending on usage (CPUs + Storage)
 
