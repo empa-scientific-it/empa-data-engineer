@@ -1,10 +1,15 @@
 import pathlib
 
+# check out: https://docs.python.org/3/library/functools.html#functools.cmp_to_key
+from functools import cmp_to_key
+
+# check out: https://docs.python.org/3/library/itertools.html?itertools.chain#itertools.chain
+from itertools import chain
+
 
 def parse(puzzle_input: str) -> list:
     """Parse input"""
-    puzzle_input = puzzle_input.split("\n\n")
-    puzzle_input = [p.split("\n") for p in puzzle_input]
+    puzzle_input = [p.split("\n") for p in puzzle_input.split("\n\n")]
     return [list(map(eval, p)) for p in puzzle_input]
 
 
@@ -39,16 +44,24 @@ def solve(input_data: str) -> int:
 
     right_order = []
 
-    for i, pair in enumerate(data, start=1):
-        if compare(*pair) < 0:
+    for i, (p1, p2) in enumerate(data, start=1):
+        if compare(p1, p2) < 0:
             right_order.append(i)
 
     return sum(right_order)
+
+
+def solve_bonus(input_data: str) -> list:
+    """Bonus: sorting the packets"""
+    data = parse(input_data)
+    return sorted(chain(*data), key=cmp_to_key(compare))
 
 
 if __name__ == "__main__":
     path = pathlib.Path(__file__).resolve()
 
     for input_file in (path.parents[1] / "input").glob("2_*_packets.txt"):
+        input_data = input_file.read_text()
         print(f"File: {input_file.name}")
-        print(f"Solution: {solve(input_file.read_text())}\n")
+        print(f"Solution: {solve(input_data)}\n")
+        print(f"Sorted packets: {solve_bonus(input_data)}\n")
