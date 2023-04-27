@@ -134,7 +134,7 @@ Callisto: x=3, y=5, z=-1
 
 To perform the simulation, start by considering every pair of moons. On each axis, the velocity changes by **exactly** `+1` or `-1`. The sign of the velocity change is determined by comparing the positions of the two moons on that axis.
 
-For example, if Ganymede's x position (`G_x`) is 5 and Callisto's x position (`C_x`) is 3, then Ganymede's `x` velocity changes by `+1` (because `G_x > C_x`), and Callisto's `x` velocity must change by `-1` (because `C_x < G_x`).
+For example, if Ganymede's x position (`G_x`) is 3 and Callisto's x position (`C_x`) is 5, then Ganymede's `x` velocity changes by `+1` (because `G_x > C_x`), and Callisto's `x` velocity must change by `-1` (because `C_x < G_x`).
 
 If the positions of the two moons on a given axis are the same, then the velocity on that axis doesn't change at all. For instance, if Europa and Ganymede have the same `y` position, then the `y` component of their velocities remains **unchanged**.
 
