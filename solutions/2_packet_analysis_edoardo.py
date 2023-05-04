@@ -44,17 +44,20 @@ def solve(input_data: str) -> int:
 
     right_order = []
 
-    for i, (p1, p2) in enumerate(data, start=1):
-        if compare(p1, p2) < 0:
+    for i, (p_1, p_2) in enumerate(data, start=1):
+        if compare(p_1, p_2) < 0:
             right_order.append(i)
 
     return sum(right_order)
 
 
-def solve_bonus(input_data: str) -> list:
+def solve_bonus(input_data: str) -> tuple:
     """Bonus: sorting the packets"""
-    data = parse(input_data)
-    return sorted(chain(*data), key=cmp_to_key(compare))
+    extra = [[[2]], [[6]]]
+    data = list(chain.from_iterable(parse(input_data)))  # unroll the list
+    data.extend(extra)  # add the extra packets
+    data.sort(key=cmp_to_key(compare))  # sort the packets
+    return tuple(data.index(p) + 1 for p in extra)  # find and return the indexes
 
 
 if __name__ == "__main__":
@@ -62,6 +65,6 @@ if __name__ == "__main__":
 
     for input_file in (path.parents[1] / "input").glob("2_*_packets.txt"):
         input_data = input_file.read_text()
-        print(f"File: {input_file.name}")
-        print(f"Solution: {solve(input_data)}\n")
-        print(f"Sorted packets: {solve_bonus(input_data)}\n")
+        print(f"File: {input_file.name}\n")
+        print(f"  Solution: {solve(input_data)}\n")
+        print(f"  Bonus: {solve_bonus(input_data)}\n")

@@ -94,13 +94,12 @@ def part2(universe_conf: pathlib.Path) -> str:
     universe_0 = Universe(universe_conf.read_text())  # initial state
 
     step = 0
-    AXIS = range(3)
-    loops = [None for _ in AXIS]
+    loops = [None for _ in range(3)]
 
     while True:
         step += 1
         universe.evolve()
-        for axis in AXIS:
+        for axis in range(3):
             if loops[axis]:
                 continue
 
