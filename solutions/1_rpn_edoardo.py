@@ -1,8 +1,8 @@
 import pathlib
 import re
-from operator import add, mul, sub, truediv
+from operator import add, mul, sub, floordiv
 
-ops = {"+": add, "-": sub, "*": mul, "/": truediv}
+ops = {"+": add, "-": sub, "*": mul, "/": floordiv}
 
 
 def eval_expr(expr: str) -> str:
