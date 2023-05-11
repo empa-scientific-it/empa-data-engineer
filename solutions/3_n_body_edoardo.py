@@ -49,6 +49,9 @@ class Moon:
             self.name, *self.positions, *self.velocities
         )
 
+    def __str__(self) -> str:
+        return self.__repr__()
+
 
 class Universe:
     def __init__(self, moons: str) -> None:
@@ -73,6 +76,9 @@ class Universe:
     def __repr__(self) -> str:
         return "\n".join(repr(moon) for moon in self.moons)
 
+    def __str__(self) -> str:
+        return self.__repr__()
+
 
 def part1(universe_conf: pathlib.Path) -> str:
     """Question 1"""
@@ -91,28 +97,36 @@ def part2(universe_conf: pathlib.Path) -> str:
     print("  Question 2:")
 
     universe = Universe(universe_conf.read_text())
-    universe_0 = Universe(universe_conf.read_text())  # initial state
+    universe_init = Universe(universe_conf.read_text())  # initial state
 
     step = 0
     loops = [None for _ in range(3)]
 
     while True:
         step += 1
-        universe.evolve()
-        for axis in range(3):
-            if loops[axis]:
+        universe.evolve()  # evolve universe by 1 step
+        for axis in range(3):  # loop over all the 3 axes
+            if loops[axis]:  # if we already found the period along this axis, skip it
                 continue
 
             for n, moon in enumerate(universe.moons):
-                if not moon.overlaps_with(universe_0.moons[n], axis):
+                # check if any of the moons overlaps with its initial state along this axis
+                if not moon.overlaps_with(universe_init.moons[n], axis):
+                    # if one moon does NOT overlap, stop:
+                    # this step cannot be the period we're looking for
                     break
             else:
+                # otherwise, we found the period along this axis
                 loops[axis] = step
 
         if all(loops):
+            # as soon as we have found periods along ALL the axis, stop the evolution
             break
 
-    return f"    Initial state repeated after {lcm(*loops)} steps\n"
+    # the actual period is the Least Common Multiple between the periods found along each axis
+    period = lcm(*loops)
+
+    return f"    Initial state repeated after {period} steps\n"
 
 
 if __name__ == "__main__":
